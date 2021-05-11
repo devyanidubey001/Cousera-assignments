@@ -1,0 +1,20 @@
+name = input("Enter file:")
+if len(name) < 1 : name = "mbox-short.txt"
+file = open(name)
+count ={}
+#reading file
+for line in file: 
+    if line.startswith("From "):
+        x=line.strip().split()          #creating a list of words in each line
+        y=x[1]                          #taking second word from the list
+        if y in count:                  #creating dic for keeping word and its count
+            count[y]=count[y]+1
+        else:
+            count[y]=1
+#word with highest count
+name= None     
+messagesent = None
+for key,value in count.items():  
+    if name is None or value > messagesent:
+          name = key
+          messagesent=value
