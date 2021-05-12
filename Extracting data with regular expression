@@ -1,0 +1,21 @@
+Handling The Data
+The basic outline of this problem is to read the file, look for integers using the re.findall(), looking for a regular expression of '[0-9]+' and then converting the extracted strings to integers and summing up the integers.
+
+
+
+
+
+
+import re
+file = open("regex_sum_1216654.txt")
+y=[]
+total=0
+for line in file:
+    x= re.findall('([0-9]+)', line) 
+    if len(x)<1 : continue
+    for i in range(len(x)):  #converting string elements to int
+        x[i]=int(x[i])
+    y= x+y
+for ele in range(len(y)): #adding all the elements in the list y
+    total=total+y[ele]
+print(total)
