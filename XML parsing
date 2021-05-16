@@ -1,0 +1,23 @@
+import urllib.request, urllib.parse, urllib.error
+import xml.etree.ElementTree as ET
+
+
+
+url = input('Enter url: ')
+print("Retreving", url)
+#openning web page with urllib
+uh = urllib.request.urlopen(url) 
+data=uh.read() #reads the data or xml file
+print("Retrieved", len(data), "characters")
+
+tree = ET.fromstring(data)
+results=tree.findall('comments/comment') #returns a list of all the child tags under the parent tag,
+                                          #comments-parent tag, comment-child tag
+icount=len(results)
+isum=0
+for x in results:
+    counts = int(x.find('count').text)
+    isum = isum+counts
+print(icount)
+print(isum)
+
